@@ -949,6 +949,7 @@ $ chmod +x ${HOME}/workspace/paasta-5.0.2/deployment/paasta-deployment/paasta/*.
 
 ## <div id='1030'/>3.7.  PaaS-TA 설치
 - 서버 환경에 맞추어 어떤 VM 타입으로 배포할지 결정한 뒤 Deploy 스크립트 파일의 설정을 수정한다.
+- PaaS-TA 5.0.2-min는 현재 AWS 환경에서만 지원한다.
 
 > $ vi ${HOME}/workspace/paasta-5.0.2/deployment/paasta-deployment/paasta/deploy-aws-4vm.sh
 
