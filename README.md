@@ -25,15 +25,11 @@
 　　　●  [PaaS-TA 그외 Variable List](#1021)  
 　　3.6.2. [PaaS-TA Operation 파일](#1022)  
 　　3.6.3. [PaaS-TA 설치 Shell Scripts](#1023)  
-　　　●  [deploy-aws.sh](#1024)  
-　　　●  [deploy-azure.sh](#1025)  
-　　　●  [deploy-gcp.sh](#1026)  
-　　　●  [deploy-openstack.sh](#1027)  
-　　　●  [deploy-vsphere.sh](#1028)  
-　　　●  [deploy-bosh-lite.sh](#1029)  
-　3.7. [PaaS-TA 설치](#1030)  
-　3.8. [PaaS-TA 설치 - 다운로드 된 Release 파일 이용 방식](#1031)  
-　3.9. [PaaS-TA 로그인](#1032)   
+　　　●  [deploy-aws-4vms.sh](#1024)  
+　　　●  [deploy-aws-7vms.sh](#1025)  
+　3.7. [PaaS-TA 설치](#1026)  
+　3.8. [PaaS-TA 설치 - 다운로드 된 Release 파일 이용 방식](#1027)  
+　3.9. [PaaS-TA 로그인](#1028)   
 
 ## Executive Summary
 
@@ -949,7 +945,7 @@ $ chmod +x ${HOME}/workspace/paasta-5.0.2/deployment/paasta-deployment/paasta/*.
 
 
 
-## <div id='1030'/>3.7.  PaaS-TA 설치
+## <div id='1036'/>3.7.  PaaS-TA 설치
 - 서버 환경에 맞추어 어떤 VM 타입으로 배포할지 결정한 뒤 Deploy 스크립트 파일의 설정을 수정한다.
 
 
@@ -1037,7 +1033,7 @@ Succeeded
 
 
 
-## <div id='1031'/>3.8.  PaaS-TA 설치 - 다운로드 된 Release 파일 이용 방식
+## <div id='1027'/>3.8.  PaaS-TA 설치 - 다운로드 된 Release 파일 이용 방식
 
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 작업 경로로 위치시킨다.  
@@ -1164,7 +1160,7 @@ Succeeded
 
 
 
-## <div id='1032'/>3.9.  PaaS-TA 로그인 
+## <div id='1028'/>3.9.  PaaS-TA 로그인 
 
 CF CLI를 설치하고 PaaS-TA에 로그인한다.
 CF API는 PaaS-TA 배포 시 지정했던 System Domain 명을 사용한다.
