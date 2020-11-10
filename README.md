@@ -47,7 +47,7 @@
 ## <div id='103'/>● 범위
 본 문서는 cf-deployment v9.5.0을 기준으로 작성되었다.  
 PaaS-TA은 bosh-deployment를 기반으로 한 BOSH 환경에서 설치한다.  
-PaaS-TA 5.0.2-min 설치 시 필요한 Stemcell은 기존 PaaS-TA 5.0.2 설치와 동일한 ubuntu-xenial-315.64을 사용하였다.
+PaaS-TA 5.0.2-min 설치 시 필요한 Stemcell은 기존 PaaS-TA 5.0.2 설치와 동일한 ubuntu-xenial-315.64을 사용하였다.  
 PaaS-TA 5.0.2-min는 현재 AWS 환경에서만 지원한다.
 
 ## <div id='104'/>● 참고 자료
