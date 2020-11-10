@@ -877,7 +877,7 @@ PaaS-TA 5.0.2-min는 현재 AWS 환경에서만 지원한다.
 <b>※ PaaS-TA 설치 시 명령어는 deploy로 시작한다.</b><br>
 BOSH 명령어로 설치가 가능하며, IaaS 환경에 따라 Option이 달라진다.
 
-- PaaS-TA 배포 BOSH 명령어 예시
+PaaS-TA 배포 BOSH 명령어 예시
 
 ```
 $ bosh –e {director_name} –d paasta deploy {deploy.yml}
