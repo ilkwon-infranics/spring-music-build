@@ -898,7 +898,7 @@ ex) uaa_client_admin_secret="admin-secret"
 
 ### <div id='1023'/>2.6.3.   PaaS-TA 설치 Shell Scripts
 
-paasta-deployment-min.yml 파일은 PaaS-TA-min를 배포하는 Manifest 파일이며, PaaS-TA VM에 대한 설치 정의를 하게 된다.  
+min-paasta-deployment.yml 파일은 PaaS-TA-min를 배포하는 Manifest 파일이며, PaaS-TA VM에 대한 설치 정의를 하게 된다.  
 PaaS-TA VM 중 singleton-blobstore, database의 AZs(zone)을 변경하면 조직(ORG), 스페이스(SPACE), 앱(APP) 정보가 모두 삭제된다. 
 
 이미 설치된 PaaS-TA의 재배포 시, singleton-blobstore, database의 AZs(zone)을 변경하면 조직(ORG), 공간(SPACE), 앱(APP) 정보가 모두 삭제된다.  
