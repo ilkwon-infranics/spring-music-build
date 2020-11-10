@@ -6,30 +6,29 @@
 　● [목적](#102)  
 　● [범위](#103)  
 　● [참고 자료](#104)  
-2. [PaaS-TA 5.0.2](#105)  
-3. [PaaS-TA 5.0.2 설치](#106)  
-　3.1. [Prerequisite](#107)  
-　3.2. [설치 파일 다운로드](#108)  
-　3.3. [Stemcell 업로드](#109)  
-　3.4. [Cloud Config 설정](#1010)  
+2. [PaaS-TA 5.0.2 설치](#106)  
+　2.1. [Prerequisite](#107)  
+　2.2. [설치 파일 다운로드](#108)  
+　2.3. [Stemcell 업로드](#109)  
+　2.4. [Cloud Config 설정](#1010)  
 　　●  [AZs](#1011)  
 　　●  [VM types](#1012)  
 　　●  [Compilation](#1013)  
 　　●  [Disk Size](#1014)  
 　　●  [Networks](#1015)  
-　3.5. [Runtime Config 설정](#1016)  
-　3.6. [PaaS-TA 환경 설정](#1017)  
-　　3.6.1. [PaaS-TA 설치 Variable 파일](#1018)    
+　2.5. [Runtime Config 설정](#1016)  
+　2.6. [PaaS-TA 환경 설정](#1017)  
+　　2.6.1. [PaaS-TA 설치 Variable 파일](#1018)    
 　　　●  [common_vars.yml](#1019)  
 　　　●  [{IaaS}-vars.yml](#1020)  
 　　　●  [PaaS-TA 그외 Variable List](#1021)  
-　　3.6.2. [PaaS-TA Operation 파일](#1022)  
-　　3.6.3. [PaaS-TA 설치 Shell Scripts](#1023)  
+　　2.6.2. [PaaS-TA Operation 파일](#1022)  
+　　2.6.3. [PaaS-TA 설치 Shell Scripts](#1023)  
 　　　●  [deploy-aws-4vms.sh](#1024)  
 　　　●  [deploy-aws-7vms.sh](#1025)  
-　3.7. [PaaS-TA 설치](#1026)  
-　3.8. [PaaS-TA 설치 - 다운로드 된 Release 파일 이용 방식](#1027)  
-　3.9. [PaaS-TA 로그인](#1028)   
+　2.7. [PaaS-TA 설치](#1026)  
+　2.8. [PaaS-TA 설치 - 다운로드 된 Release 파일 이용 방식](#1027)  
+　2.9. [PaaS-TA 로그인](#1028)   
 
 ## Executive Summary
 <br>
@@ -59,23 +58,16 @@ BOSH Deployment: [https://github.com/cloudfoundry/bosh-deployment](https://githu
 
 CF Deployment: [https://github.com/cloudfoundry/cf-deployment](https://github.com/cloudfoundry/cf-deployment)
 
-# <div id='105'/>2. PaaS-TA 5.0.2-min
 
-PaaS-TA는 BOSH를 기반으로 설치된다. BOSH CLI를 사용하여 BOSH를 생성한 후, paasta-deployment로 PaaS-TA를 배포한다. 
+# <div id='106'/>2. PaaS-TA 5.0.2
 
-PaaS-TA 3.1 버전까지는 PaaS-TA Container, Controller를 각각의 deployment로 설치했지만, PaaS-TA 3.5 버전부터 paasta-deployment 하나로 통합되었으며, 한 번에 PaaS-TA를 설치한다. 
-
-![PaaSTa_BOSH_Use_Guide_Image2]  
-
-# <div id='106'/>3. PaaS-TA 5.0.2-min 설치
-
-## <div id='107'/>3.1. Prerequisite
+## <div id='107'/>2.1. Prerequisite
 
 - BOSH2 기반의 BOSH를 설치한다.
 - PaaS-TA 설치는 BOSH를 설치한 Inception(설치 환경)에서 작업한다.
 
 
-## <div id='108'/>3.2. 설치 파일 다운로드
+## <div id='108'/>2.2. 설치 파일 다운로드
 - PaaS-TA를 설치하기 위한 deployment가 존재하지 않는다면 다운로드 받는다
 ```
 $ cd ${HOME}/workspace/paasta-5.0.2/deployment
@@ -83,7 +75,7 @@ $ git clone https://github.com/PaaS-TA/common.git
 $ git clone https://github.com/PaaS-TA/paasta-deployment.git -b paasta-min
 ```
 
-## <div id='109'/>3.3. Stemcell 업로드
+## <div id='109'/>2.3. Stemcell 업로드
 VM을 배포할 때 사용되는 Stemcell을 BOSH에 업로드할 경우 로컬 파일과 URL을 직접 입력하여 업로드, 두가지 방법을 사용할 수 있다.  
 로컬 파일을 사용할 경우 PaaS-TA 사이트에서 [PaaS-TA Stemcell](https://paas-ta.kr/download/package) 파일을 내려받아 ${HOME}/workspace/paasta-5.0.2/stemcell 이하 디렉터리에 압축을 푼다.  
 압축을 풀면 아래와 같이 ${HOME}/workspace/paasta-5.0.2/stemcell/paasta 디렉터리가 생성되며 릴리즈 파일(tgz)이 존재한다.
@@ -114,7 +106,7 @@ $ bosh -e {director_name} upload-stemcell https://s3.amazonaws.com/bosh-core-ste
 ```
 
 
-## <div id='1010'/>3.4. Cloud Config 설정
+## <div id='1010'/>2.4. Cloud Config 설정
 
 PaaS-TA를 설치하기 위한 IaaS 관련 Network, Storage, VM 관련 설정을 Cloud Config로 정의한다.  
 PaaS-TA 설치 파일을 내려받으면 ${HOME}/workspace/paasta-5.0.2/deployment/paasta-deployment/cloud-config 디렉터리 이하에 IaaS별 Cloud Config 예제를 확인할 수 있으며, 예제를 참고하여 cloud-config.yml을 IaaS에 맞게 수정한다.  
@@ -474,7 +466,7 @@ PaaS-TA 및 서비스가 설치되는 VM의 Persistent Disk Size이다.
 Networks는 AZ 별 Subnet Network, DNS, Security Groups, Network ID를 정의한다.  
 보통 AZ 별로 256개의 IP를 정의할 수 있도록 Range Cider를 정의한다.
 
-## <div id='1016'/>3.5. Runtime Config 설정  
+## <div id='1016'/>2.5. Runtime Config 설정  
 
 - DNS Runtime Config  
   PaaS-TA 4.0부터 적용되는 부분으로 PaaS-TA Component에서 Consul이 대체된 Component이다.  
@@ -506,7 +498,7 @@ Networks는 AZ 별 Subnet Network, DNS, Security Groups, Network ID를 정의한
   $ bosh –e {director_name} runtime-config --name=os-conf
   ```  
 
-## <div id='1017'/>3.6.  PaaS-TA 환경 설정
+## <div id='1017'/>2.6.  PaaS-TA 환경 설정
 
 ${HOME}/workspace/paasta-5.0.2/deployment/paasta-deployment 이하 디렉터리에는 IaaS별 PaaS-TA 설치 Shell Script 파일이 존재하며, 이를 실행하여 PaaS-TA를 설치한다.  
 파일명은 deploy-{IaaS}.sh이다.  
@@ -566,7 +558,7 @@ PaaS-TA 배포 시, 설치 Option을 추가해야 한다. 설치 Option에 대�
 </tr>
 </table>
 
-### <div id='1018'/>3.6.1. PaaS-TA 설치 Variable File
+### <div id='1018'/>2.6.1. PaaS-TA 설치 Variable File
 
 
 #### <div id='1019'/>● common_vars.yml
@@ -833,7 +825,7 @@ ex) uaa_client_admin_secret="admin-secret"
 
 
 
-### <div id='1022'/>3.6.2. PaaS-TA Operation 파일
+### <div id='1022'/>2.6.2. PaaS-TA Operation 파일
 
 <table>
 <tr>
@@ -904,7 +896,7 @@ ex) uaa_client_admin_secret="admin-secret"
 
 
 
-### <div id='1023'/>3.6.3.   PaaS-TA 설치 Shell Scripts
+### <div id='1023'/>2.6.3.   PaaS-TA 설치 Shell Scripts
 
 paasta-deployment-min.yml 파일은 PaaS-TA-min를 배포하는 Manifest 파일이며, PaaS-TA VM에 대한 설치 정의를 하게 된다.  
 PaaS-TA VM 중 singleton-blobstore, database의 AZs(zone)을 변경하면 조직(ORG), 스페이스(SPACE), 앱(APP) 정보가 모두 삭제된다. 
@@ -946,7 +938,7 @@ $ chmod +x ${HOME}/workspace/paasta-5.0.2/deployment/paasta-deployment/paasta/*.
 
 
 
-## <div id='1026'/>3.7.  PaaS-TA 설치
+## <div id='1026'/>2.7.  PaaS-TA 설치
 - 서버 환경에 맞추어 어떤 VM 타입으로 배포할지 결정한 뒤 Deploy 스크립트 파일의 설정을 수정한다.
 
 
@@ -1034,7 +1026,7 @@ Succeeded
 
 
 
-## <div id='1027'/>3.8.  PaaS-TA 설치 - 다운로드 된 Release 파일 이용 방식
+## <div id='1027'/>2.8.  PaaS-TA 설치 - 다운로드 된 Release 파일 이용 방식
 
 
 - 서비스 설치에 필요한 릴리즈 파일을 다운로드 받아 Local machine의 작업 경로로 위치시킨다.  
@@ -1161,7 +1153,7 @@ Succeeded
 
 
 
-## <div id='1028'/>3.9.  PaaS-TA 로그인 
+## <div id='1028'/>2.9.  PaaS-TA 로그인 
 
 CF CLI를 설치하고 PaaS-TA에 로그인한다.
 CF API는 PaaS-TA 배포 시 지정했던 System Domain 명을 사용한다.
