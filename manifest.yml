@@ -4,4 +4,6 @@ applications:
   memory: 768M 
   random-route: false
   path: build/libs/spring-music.jar
+  buildpacks:
+    - java_buildpack
 
