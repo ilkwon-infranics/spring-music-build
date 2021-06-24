@@ -1,7 +1,7 @@
 ---
 applications:
 - name: spring-music
-  memory: 768M 
+  memory: 777M 
   random-route: false
   path: build/libs/spring-music.jar
   buildpacks:
